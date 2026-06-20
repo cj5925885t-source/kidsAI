@@ -46,10 +46,10 @@ st.divider()
 
 # 先生の操作パネル
 with st.container(border=True):
-    st.markdown("👩‍🏫 **せんせい用の そうさパネル**")
+    st.markdown("👩‍🏫 **せんせいがそうさしてね**")
     question = st.text_input(
-        label="今日のしつもんを入力してね",
-        value="　"
+        label="問題を入力",
+        value=""
     )
 
 st.write("") 
@@ -64,13 +64,13 @@ with col_img:
         st.write("👩‍🏫\n(先生の画像)")
 
 with col_text:
-    st.markdown(f"### 🤔 今日のしつもん\n**「{question}」**")
+    st.markdown(f"### 🤔 もんだい\n**「{question}」**")
 
 # マイクボタン
 col_space, col_mic, col_space2 = st.columns([1, 2, 1])
 with col_mic:
-    st.write("👇 マイクのボタンを押してね")
-    audio_value = st.audio_input("こたえを お話しする")
+    st.write("👇 マイクのボタンをおしてね")
+    audio_value = st.audio_input("こたえをおはなししてね")
 
 st.divider()
 
@@ -84,7 +84,7 @@ if audio_value:
         st.write("（お話しした こたえ）")
         st.audio(audio_value)
     
-    with st.spinner("AI先生が お返事を 考えているよ..."):
+    with st.spinner("AI先生がかんがえているよ..."):
         try:
             audio_bytes = audio_value.getvalue()
             audio_part = types.Part.from_bytes(data=audio_bytes, mime_type="audio/wav")
@@ -96,6 +96,7 @@ if audio_value:
             例えば
             ☆★★★★ほし4つのように表示したその下に改行して講評を書いてください
             子供の名前は呼ばなくて良いです。
+            星四つ以上の場合にこの問題が合格である旨を伝えてください
             """
             
             response = client.models.generate_content(
