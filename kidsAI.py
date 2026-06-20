@@ -14,6 +14,15 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 
 st.set_page_config(page_title="サイキッズAI", page_icon="✨", layout="centered")
 
+hide_menu_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_menu_style, unsafe_allow_html=True)
+
 # 💡【重要】このファイル（kidsAI.py）があるフォルダのパスを自動で取得します
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
