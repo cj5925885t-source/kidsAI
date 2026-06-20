@@ -78,13 +78,13 @@ st.divider()
 # 3. 実行部分
 # ==========================================
 if audio_value:
-    st.toast("お返事が届いたよ！", icon="✅")
+    st.toast("おへんじがとどいたよ！", icon="✅")
     
     with st.chat_message("user", avatar="👦"):
-        st.write("（お話しした こたえ）")
+        st.write("（おはなしした こたえ）")
         st.audio(audio_value)
     
-    with st.spinner("AI先生がかんがえているよ..."):
+    with st.spinner("AIせんせいがかんがえているよ..."):
         try:
             audio_bytes = audio_value.getvalue()
             audio_part = types.Part.from_bytes(data=audio_bytes, mime_type="audio/wav")
